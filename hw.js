@@ -11,15 +11,15 @@ app.get('/', function(req,res){
     res.sendFile(path.resolve(__dirname  , "../session1/index.html" ));
 })
 
-for(let k=13;k<=20;k++){
-    let str = '/web'+k;
-    let str1= "./data"+str+".json";
+for(let i=13;i<=20;i++){
+   
+    let str1= "./data"+'/web'+i+".json";
     app.get(str,function(req,res){
         var li='';
         var data=fs.readFileSync(path.resolve(__dirname,str1));
-        var dataArray=JSON.parse(data);
-        for(var i=0;i<dataArray.length;i++){
-            li+="<li>"+dataArray[i]+"</li>"; 
+        var dataArr=JSON.parse(data);
+        for(var i=0;i<dataArr.length;i++){
+            li+="<li>"+dataArr[i]+"</li>"; 
         }
         res.send("<ul>"+li+"</ul>");
     });
